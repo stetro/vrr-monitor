@@ -1,17 +1,16 @@
 
 #include <Arduino.h>
 
-
 #include <WiFi.h>
 #define ENDLESS_DEEPSLEEP -1
 
 #define MAX_WIFI_RETRIES 20
 
 #include <configuration.h>
-#include <digitransit-display.h>
-#include <digitransit.h>
+#include <display.h>
+#include <timetable.h>
 
-Digitransit digitransit;
+Timetable timetable;
 Configuration configuration;
 ConfigurationData* configuration_data;
 
@@ -61,30 +60,14 @@ void loop() {
     Serial.println("[WIFI] connected");
     while (true) {
       bool querySucceeded = false;
-      if (configuration_data->bike_station) {
-        querySucceeded = digitransit.queryBikeStation(
-            configuration_data->digitransit_server_id,
-            configuration_data->digitransit_station_id);
-      } else {
-        querySucceeded = digitransit.queryTimetable(
-            configuration_data->digitransit_server_id,
-            configuration_data->digitransit_station_id);
-      }
+      querySucceeded = timetable.queryTimetable("8001588");
 
       if (querySucceeded) {
         display.clear();
-        display.updateTimetable(&digitransit);
-        if (configuration_data->bike_station) {
-          display.showBikeStation();
-        } else {
-          display.showTimetable();
-        }
+        display.updateTimetable(&timetable);
+        display.showTimetable();
         delay(60000);
         show_counter++;
-        if (show_counter >= configuration_data->turnoff &&
-            configuration_data->turnoff > 0) {
-          deepSleep();
-        }
       } else {
         display.clear();
         display.showError();
