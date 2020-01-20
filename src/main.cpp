@@ -1,15 +1,9 @@
 
 #include <Arduino.h>
 
-#ifdef NODE_MCU_ESP8266
-#include <ESP8266WiFi.h>
-#define ENDLESS_DEEPSLEEP 0
-#endif
 
-#ifdef NODE_MCU_ESP32
 #include <WiFi.h>
 #define ENDLESS_DEEPSLEEP -1
-#endif
 
 #define MAX_WIFI_RETRIES 20
 
@@ -21,11 +15,7 @@ Digitransit digitransit;
 Configuration configuration;
 ConfigurationData* configuration_data;
 
-#if DIGITRANSIT_DISPLAY == 0
 LiquidCrystalDisplay display;
-#else
-OledDisplay display;
-#endif
 
 int show_counter = 0;
 int wifi_connection_retries = 0;

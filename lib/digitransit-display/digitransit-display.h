@@ -6,10 +6,8 @@
 #define DIGITRANSIT_DISPLAY_ADDRESS 0x3C
 #endif  // DIGITRANSIT_DISPLAY_ADDRESS
 
-#ifdef NODE_MCU_ESP32
 #define PIN_WIRE_SDA 21
 #define PIN_WIRE_SCL 22
-#endif
 
 #include <Wire.h>
 #include <digitransit.h>

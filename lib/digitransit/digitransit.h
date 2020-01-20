@@ -4,9 +4,6 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 
-#ifdef NODE_MCU_ESP8266
-#include <ESP8266HTTPClient.h>
-#endif
 
 #ifdef NODE_MCU_ESP32
 #include <HTTPClient.h>

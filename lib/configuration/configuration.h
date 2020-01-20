@@ -5,14 +5,8 @@
 
 #include <EEPROM.h>
 
-#ifdef NODE_MCU_ESP8266
-#include <ESP8266WiFi.h>
-#endif
-
-#ifdef NODE_MCU_ESP32
 #include <WiFi.h>
 #include <AsyncTCP.h>
-#endif
 
 #include <Arduino.h>
 #include <ESPAsyncWebServer.h>
