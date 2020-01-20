@@ -31,22 +31,6 @@ void Configuration::init() {
     Serial.println("[Configuration] password ***");
     sprintf(data.password, "%s", password.c_str());
 
-    String station = request->arg("station");
-    Serial.println("[Configuration] station " + station);
-    sprintf(data.digitransit_station_id, "%s", station.c_str());
-
-    String server = request->arg("server");
-    Serial.println("[Configuration] server " + server);
-    sprintf(data.digitransit_server_id, "%s", server.c_str());
-
-    String station_type = request->arg("station_type");
-    Serial.println("[Configuration] station type " + station_type);
-    data.bike_station = station_type.equals("bike");
-
-    String turnoff = request->arg("turnoff");
-    Serial.println("[Configuration] station type " + turnoff);
-    data.turnoff = turnoff.toInt();
-
     sprintf(data.eeprom_check, "OK");
 
     EEPROM.put(0, data);
@@ -71,15 +55,6 @@ ConfigurationData *Configuration::get_configuration() {
                 configuration_data.eeprom_check);
   Serial.printf("[Configuration] ssid %s \n", configuration_data.ssid);
   Serial.printf("[Configuration] password ***\n");
-  Serial.printf("[Configuration] server %s \n",
-                configuration_data.digitransit_server_id);
-  Serial.printf("[Configuration] station %s \n",
-                configuration_data.digitransit_station_id);
-  Serial.printf("[Configuration] station type %s \n",
-                configuration_data.bike_station ? "Bike" : "Bus");
-  Serial.printf("[Configuration] turn off minutes %d \n",
-                configuration_data.turnoff);
-
   return &configuration_data;
 }
 
@@ -90,10 +65,6 @@ void Configuration::clear() {
   sprintf(data.eeprom_check, "**");
   sprintf(data.ssid, "***");
   sprintf(data.password, "***");
-  sprintf(data.digitransit_server_id, "***");
-  sprintf(data.digitransit_station_id, "***");
-  data.bike_station = false;
-  data.turnoff = 0;
   EEPROM.put(0, data);
   EEPROM.commit();
 }

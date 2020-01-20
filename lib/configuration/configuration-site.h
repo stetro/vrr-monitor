@@ -6,7 +6,7 @@ const char INDEX_HTML[] = R"=====(
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=0">
-<title>Digitransit Sign Configuration</title>
+<title>VRR Monitor Sign Configuration</title>
 <style>
 /*!
 Pure v1.0.0
@@ -22,11 +22,8 @@ margin: 20px;
 </style>
 </head>
 <body>
-<h1>Digitransit Sign Configuration</h1>
-<p>Configure your stop sign with the following configurations. More information in the <a href="https://github.com/stetro/digitransit-busstop-sign">Github Repo</a> README.</p>
-<p>Find your station ID after search in the address bar of your local reittiopas <a href="http://waltti.fi/reittiopas/">http://waltti.fi/reittiopas/</a> or <a href="https://reittiopas.hsl.fi">https://reittiopas.hsl.fi</a></p>
-<p>For bike station support: find your bike station in <a href="https://kaupunkipyorat.hsl.fi/en/stations">https://kaupunkipyorat.hsl.fi/en/stations<a/> and choose HSL as server.</p>
-<p>Set the turnoff time to 0 to run it endlessly.</p>
+<h1>VRR Monitor Sign Configuration</h1>
+
 <form class="pure-form pure-form-aligned" method="POST" action="update">
 <fieldset>
 <div class="pure-control-group">
@@ -37,33 +34,6 @@ margin: 20px;
 <div class="pure-control-group">
 <label for="password">Wifi Password:</label>
 <input id="password" type="password" placeholder="Password" name="password">
-</div>
-
-<div class="pure-control-group">
-<label for="server">Digitransit Server:</label>
-<select name="server" id="server">
-<option value="hsl">HSL Server (Helsinki)</option>
-<option value="waltti">Waltti Server (Rest of Finland)</option>
-</select>
-</div>
-
-<div class="pure-control-group">
-<label for="station">Digitransit Station ID:</label>
-<input id="station" type="text" placeholder="Digitransit Station ID" name="station">
-</div>
-
-<div class="pure-control-group">
-<label for="station_type">Digitransit Station Type:</label>
-<select name="station_type" id="station_type">
-<option value="bus">Metro, Tram, Bus Stop</option>
-<option value="bike">Bike Station</option>
-</select>
-</div>
-
-
-<div class="pure-control-group">
-<label for="turnoff">Turnoff interval<br/>in minutes</label>
-<input id="turnoff" type="number" placeholder="minutes" name="turnoff" value="0">
 </div>
 
 <div class="pure-controls">
