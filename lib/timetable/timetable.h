@@ -54,7 +54,7 @@
 class Timetable {
  public:
   char timetable[TIMETABLE_LINES][2][TIMETABLE_STRING_SIZE + 1];
-  const char *title = "S6 Essen |S6 Koeln";
+  const char *title = "S6 Essen | S6 Koeln";
   bool queryTimetable(const char *station_id);
 
  private:

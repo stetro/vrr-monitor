@@ -37,7 +37,7 @@ void LiquidCrystalDisplay::showTimetable() {
   lcd->print(timetable->title);
   for (size_t i = 0; i < TIMETABLE_LINES; i++) {
     lcd->setCursor(0, i + 1);
-    lcd->printf("%c%-8s|%c%-8s", 0b0111110, timetable->timetable[i][0],
+    lcd->printf("%c%-8s| %c%-8s", 0b0111110, timetable->timetable[i][0],
                 0b0111110, timetable->timetable[i][1]);
   }
 }
